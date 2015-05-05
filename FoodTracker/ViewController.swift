@@ -178,12 +178,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         let searchString = self.searchController.searchBar.text
         let selectedScopeButtonIndex = self.searchController.searchBar.selectedScopeButtonIndex
-        if searchString == "" {
-            filteredSuggestedSearchFoods = suggestedSearchFoods
-        } else {
-            filterContentForSearch(searchString, scope: selectedScopeButtonIndex)
-        }
-
+        filterContentForSearch(searchString, scope: selectedScopeButtonIndex)
         self.tableView.reloadData()
         
     }
@@ -244,7 +239,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //            println(stringData)
             var conversionError: NSError?
             var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
-//            println(jsonDictionary)
+            println(jsonDictionary)
             
             if conversionError != nil {
                 println(conversionError!.localizedDescription)
